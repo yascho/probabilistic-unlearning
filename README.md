@@ -1,5 +1,14 @@
 # A Probabilistic Perspective on Unlearning and Alignment for Large Language Models
 
+<img src="./logo.png">
+
+Reference implementation of the probabilistic evaluation framework proposed in the paper:
+
+**<a href='https://openreview.net/pdf?id=51WraMid8K'>A Probabilistic Perspective on Unlearning and Alignment for Large Language Models</a>**<br>
+*Yan Scholten, Stephan Günnemann, Leo Schwinn*<br>
+International Conference on Learning Representations, ICLR 2025 (Oral)<br>
+[ <a href='https://www.cs.cit.tum.de/daml/probabilistic-unlearning/'>Project page</a> | <a href='https://openreview.net/pdf?id=51WraMid8K'>PDF</a> ]
+
 ## Code Coming Soon
 
 Training code and more supplementary materials will be released soon. In the meantime, you can explore our [demo notebook](sampling-demo.ipynb), which demonstrates that greedy evaluations can misleadingly suggest successful unlearning, while our probabilistic evaluations provide more accurate assessments of model capabilities.
