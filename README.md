@@ -18,11 +18,11 @@ Please cite our paper if you use this code in your own work:
 
 ```
 @inproceedings{scholten2024probabilistic,
-        title={A Probabilistic Perspective on Unlearning and Alignment for Large Language Models},
-        author={Yan Scholten and Stephan G{\"u}nnemann and Leo Schwinn},
-        booktitle={The Thirteenth International Conference on Learning Representations},
-        year={2025},
-        url={https://openreview.net/forum?id=51WraMid8K}
+    title={A Probabilistic Perspective on Unlearning and Alignment for Large Language Models},
+    author={Yan Scholten and Stephan G{\"u}nnemann and Leo Schwinn},
+    booktitle={The Thirteenth International Conference on Learning Representations},
+    year={2025},
+    url={https://openreview.net/forum?id=51WraMid8K}
 }
 ```
 
