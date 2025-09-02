@@ -32,7 +32,7 @@ cd finetuning
 python3 main.py -m -cd=configs -cn=phi
 ```
 
-**2. Unlearning on forget set**
+**2. Unlearning**
 
 Set the path to previously finetuned models in the configuration files `unlearning/configs/phi-*`.
 
