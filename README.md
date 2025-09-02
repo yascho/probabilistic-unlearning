@@ -43,8 +43,6 @@ python3 main.py -m -cd=configs -cn=phi-GD
 python3 main.py -m -cd=configs -cn=phi-NPO
 ```
 
-`unlearning/unlearning_trainer.py#L66`
-
 ## Cite
 Please cite our paper if you use this code in your own work:
 
