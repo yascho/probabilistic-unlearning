@@ -1,0 +1,53 @@
+defaults:
+  - override hydra/launcher: submitit_slurm
+
+hparams:
+  device: "cuda"
+  tokenizer_model: "microsoft/phi-1_5"
+  model: "INSERT_PATH_TO_FINETUNED_MODEL"
+  question_start_tag: "Question: "
+  question_end_tag: "\n"
+  answer_tag: "Answer: "
+  max_length: 256
+  batch_size_inference: 256
+
+  unlearning_loss: "grad_diff"
+  lambda: 1 
+
+  regularization: "entropy"
+  lambda_f: 1
+  lambda_r: -0.250
+
+  batch_size: 16
+  gradient_accumulation_steps: 4
+  learning_rate: 1e-5
+  num_epochs: 10
+  weight_decay: 0.01
+  gradient_checkpointing: False
+
+  save_model: True
+  seed: 0
+  split: 10
+
+hydra:  
+  sweep:
+    dir: models/phi/${hparams.unlearning_loss}/${now:%Y-%m-%d}/${now:%H-%M-%S}/
+    subdir: ${hparams.seed}
+
+  sweeper:
+    params:
+      hparams.seed: choice(0)
+
+  launcher:
+    submitit_folder: models/phi/${hparams.unlearning_loss}/${now:%Y-%m-%d}/${now:%H-%M-%S}/.submitit/%j
+    timeout_min: 120
+    gres: gpu:1
+    mem_gb: 80
+    partition: gpu_a100
+    qos: default
+    cpus_per_task: 1
+    tasks_per_node: 1
+    name: spaceship
+    _target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
+    signal_delay_s: 0
+    max_num_timeout: 0

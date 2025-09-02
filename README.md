@@ -9,9 +9,41 @@ Reference implementation of the probabilistic evaluation framework proposed in t
 International Conference on Learning Representations, ICLR 2025 (Oral)<br>
 [ <a href='https://www.cs.cit.tum.de/daml/probabilistic-unlearning/'>Project page</a> | <a href='https://openreview.net/pdf?id=51WraMid8K'>PDF</a> ]
 
-## Code Coming Soon
+## Demo notebook
 
-Training code and more supplementary materials will be released soon. In the meantime, you can explore our [demo notebook](sampling-demo.ipynb), which demonstrates that greedy evaluations can misleadingly suggest successful unlearning, while our probabilistic evaluations provide more accurate assessments of model capabilities.
+You can explore our [demo notebook](sampling-demo.ipynb), where we demonstrate that greedy evaluations can misleadingly suggest successful unlearning, while our probabilistic evaluations provide more accurate assessments of model capabilities.
+
+## Install
+Instructions for dependencies and configurations before running code:
+```
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+The code was tested with Python 3.11.9, pip 24.0, PyTorch 2.3.1+cu118, and CUDA 11.8.
+
+## Unlearning with entropy optimization
+
+The following steps show how to start unlearning experiments. You can find the implementation of the proposed entropy objective in <a href="unlearning/unlearning_trainer.py#L66">`unlearning/unlearning_trainer.py#66`<a>.
+
+**1. Finetuning on full dataset**
+```
+cd finetuning
+python3 main.py -m -cd=configs -cn=phi
+```
+
+**2. Unlearning on forget set**
+
+Set the path to previously finetuned models in the configuration files `unlearning/configs/phi-*`.
+
+```
+cd unlearning
+python3 main.py -m -cd=configs -cn=phi-GA
+python3 main.py -m -cd=configs -cn=phi-GD
+python3 main.py -m -cd=configs -cn=phi-NPO
+```
+
+`unlearning/unlearning_trainer.py#L66`
 
 ## Cite
 Please cite our paper if you use this code in your own work:
@@ -25,6 +57,10 @@ Please cite our paper if you use this code in your own work:
     url={https://openreview.net/forum?id=51WraMid8K}
 }
 ```
+
+## Acknowledgements
+
+Model finetuning and unlearning builds upon the <a href="https://github.com/locuslab/tofu">TOFU repository</a>, adapted to show the effectiveness of our method.
 
 ## Contact
 
